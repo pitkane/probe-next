@@ -16,7 +16,7 @@ pipeline {
 
     stage('Build') {
       steps {
-        runCompose("-f docker-compose.yml -f compose/test.yml -f compose/robot.yml", "build --pull")
+        runCompose("-f docker-compose.yml -f compose/test.yml", "build --pull")
       }
     }
 
@@ -38,33 +38,10 @@ pipeline {
       }
     }
 
-    stage('Robot Test') {
-      steps {
-        runCompose("-f docker-compose.yml -f compose/test.yml -f compose/robot.yml", "down -v")
-        runCompose("-f compose/robot.yml", "run robot.backend ./wait-for robot.db:5432 -- npm run db:seed:all")
-        runCompose("-f compose/robot.yml", "run robot")
-      }
-      post {
-        always {
-          step([$class: 'ArtifactArchiver', artifacts: 'results/robot/log.html, results/robot/selenium-*.png'])
-          
-          step([$class: 'RobotPublisher',
-              disableArchiveOutput: false,
-              logFileName: 'results/robot/log.html',
-              onlyCritical: true,
-              otherFiles: '',
-              outputFileName: 'results/robot/output.xml',
-              outputPath: '.',
-              passThreshold: 90,
-              reportFileName: 'results/robot/report.html',
-              unstableThreshold: 100]);
-        }
-      }
-    }
 
     stage('Deploy') {
       steps {
-        runCompose("-f docker-compose.yml -f compose/test.yml -f compose/robot.yml", "down -v")
+        runCompose("-f docker-compose.yml -f compose/test.yml", "down -v")
         runDeploy()
       }
     }

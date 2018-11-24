@@ -2,29 +2,28 @@
 
 [Click here to read the presentation](design_system_presentation.pdf).
 
-This is a short presentation into how design systems could be used to add *automated testing*, *deployment pipelines*, *security audits*, *linting* and *better development practices*.
-
+This is a short presentation into how design systems could be used to add _automated testing_, _deployment pipelines_, _security audits_, _linting_ and _better development practices_.
 
 ## Prerequisites
 
 ### Using Docker
 
-* [docker](https://docker.com)
+- [docker](https://docker.com)
 
 ### Using Node
 
-* [nodejs](https://nodejs.org)
-* [postgresql](https://www.postgresql.org/)
+- [nodejs](https://nodejs.org)
+- [postgresql](https://www.postgresql.org/)
 
 ## Running the application using Docker
 
 ### Start the application
 
 Execute the following commands in terminal or command prompt window in design-system-example directory to build Application login page.
-    
+
     docker-compose build
     docker-compose up
-    
+
 Open the application login page in your browser: [localhost:8000](http://localhost:8000).
 
 Close the application by Ctrl-C in terminal or command prompt window
@@ -69,15 +68,15 @@ Execute the following commands in terminal or command prompt window in design-sy
 
 ### Test
 
-#### Backend
+- Backend
 
-    cd backend
-    npm test
+  cd backend
+  npm test
 
-#### Frontend
+- Frontend
 
-    cd frontend
-    npm test
+  cd frontend
+  npm test
 
 ## Ansible
 

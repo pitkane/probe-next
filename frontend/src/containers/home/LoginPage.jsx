@@ -1,18 +1,19 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment } from "react";
+import PropTypes from "prop-types";
 
-import TextField from '../../components/designsystem/TextField';
-import Checkbox from '../../components/designsystem/Checkbox';
-import Button from '../../components/designsystem/Button';
-import Alert from '../../components/designsystem/Alert';
+import TextField from "../../components/designsystem/TextField";
+import Checkbox from "../../components/designsystem/Checkbox";
+import Button from "../../components/designsystem/Button";
+import Alert from "../../components/designsystem/Alert";
 
-import Footer from '../../components/Footer';
+import Footer from "../../components/Footer";
 
 class LoginPage extends Component {
-  state = { email: '', password: '' }
+  state = { email: "", password: "" };
 
-  handleChange = (event) => {
+  handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
-  }
+  };
 
   render() {
     const { error, handleLogin } = this.props;
@@ -24,18 +25,44 @@ class LoginPage extends Component {
 
         <Alert text={error} />
 
-        <TextField placeholder="Username" name="email" type="text" icon="user" onChange={this.handleChange} />
+        <TextField
+          placeholder="Username"
+          name="email"
+          type="text"
+          icon="user"
+          onChange={this.handleChange}
+        />
 
-        <TextField placeholder="Password" name="password" type="password" icon="lock" onChange={this.handleChange} />
+        <TextField
+          placeholder="Password"
+          name="password"
+          type="password"
+          icon="lock"
+          onChange={this.handleChange}
+        />
 
         <Checkbox id="rememberme" value="Keep me logged in" />
 
-        <Button type="submit" value="LOG IN" onClick={() => handleLogin(email, password)} primary />
+        <Button
+          type="submit"
+          value="LOG IN"
+          onClick={() => handleLogin(email, password)}
+          primary
+        />
 
         <Footer />
       </Fragment>
     );
   }
 }
+
+LoginPage.propTypes = {
+  error: PropTypes.string,
+  handleLogin: PropTypes.func.isRequired
+};
+
+LoginPage.defaultProps = {
+  error: ""
+};
 
 export default LoginPage;
