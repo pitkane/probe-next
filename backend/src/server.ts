@@ -1,12 +1,23 @@
 import "reflect-metadata";
-import { createConnection } from "typeorm";
+import { createConnection, ConnectionOptions } from "typeorm";
 import * as express from "express";
 import * as bodyParser from "body-parser";
 import { Request, Response } from "express";
 import { Routes } from "./routes";
 import { User } from "./entity/User";
 
-createConnection()
+const connectionOpts: ConnectionOptions = {
+  type: "postgres",
+  host: process.env.DB_HOST || "db",
+  port: Number(process.env.DB_PORT) || 5432,
+  username: process.env.DB_USERNAME || "postgres",
+  password: process.env.DB_PASSWORD || "example",
+  database: process.env.DB_NAME || "postgres",
+  entities: [User],
+  synchronize: true
+};
+
+createConnection(connectionOpts)
   .then(async connection => {
     // create express app
     const app = express();
@@ -39,7 +50,7 @@ createConnection()
     // ...
 
     // start express server
-    app.listen(4000);
+    app.listen(9000);
 
     // insert new users for test
     await connection.manager.save(
@@ -49,7 +60,7 @@ createConnection()
         age: 27
       })
     );
-    
+
     await connection.manager.save(
       connection.manager.create(User, {
         firstName: "Phantom",
@@ -59,7 +70,7 @@ createConnection()
     );
 
     console.log(
-      "Express server has started on port 3000. Open http://localhost:4000/users to see results"
+      "Express server has started on port 9000. Open http://localhost:9000/users to see results"
     );
   })
   .catch(error => console.log(error));
