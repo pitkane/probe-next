@@ -13,7 +13,11 @@ exports[`TextField renders correctly 1`] = `
     />
     <input
       className="uk-input uk-form-large"
+      name=""
+      onChange={[Function]}
+      placeholder=""
       required={false}
+      type=""
     />
   </div>
 </div>

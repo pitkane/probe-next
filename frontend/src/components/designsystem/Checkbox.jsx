@@ -14,10 +14,13 @@ const Checkbox = props => {
 };
 
 Checkbox.propTypes = {
-  value: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired
+  value: PropTypes.string,
+  id: PropTypes.string
 };
 
-Checkbox.defaultProps = {};
+Checkbox.defaultProps = {
+  value: "",
+  id: ""
+};
 
 export default Checkbox;

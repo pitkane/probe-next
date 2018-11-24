@@ -6,7 +6,10 @@ exports[`Button renders correctly 1`] = `
 >
   <button
     className="uk-button uk-button-large uk-width-1-1"
+    onClick={[Function]}
     type="button"
-  />
+  >
+    lol
+  </button>
 </div>
 `;

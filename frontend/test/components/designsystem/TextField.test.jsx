@@ -1,13 +1,11 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
+import React from "react";
+import renderer from "react-test-renderer";
 
-import TextField from '../../../src/components/designsystem/TextField';
+import TextField from "../../../src/components/designsystem/TextField";
 
-describe('TextField', () => {
-  it('renders correctly', () => {
-    const component = (
-      <TextField />
-    );
+describe("TextField", () => {
+  it("renders correctly", () => {
+    const component = <TextField onChange={() => {}} />;
     const tree = renderer.create(component).toJSON();
 
     expect(tree).toMatchSnapshot();

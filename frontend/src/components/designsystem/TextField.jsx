@@ -26,7 +26,7 @@ const TextField = props => {
 
 TextField.propTypes = {
   required: PropTypes.bool,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   placeholder: PropTypes.string,
   type: PropTypes.string,
   icon: PropTypes.string,
@@ -35,6 +35,7 @@ TextField.propTypes = {
 
 TextField.defaultProps = {
   required: false,
+  name: "",
   placeholder: "",
   type: "",
   icon: ""
