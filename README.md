@@ -1,3 +1,7 @@
+Every credit to Marko Klemetti: <https://github.com/mrako/design-system-example>
+
+Very WIP ;) 
+
 # Design System Example
 
 [Click here to read the presentation](design_system_presentation.pdf).
